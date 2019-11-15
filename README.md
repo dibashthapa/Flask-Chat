@@ -10,7 +10,8 @@ Make sure you have **Python3** installed in your pc<br>
 `git clone https://github.com/dibashthapa/Flask-Chat.git`<br>
 Change your directory to the Flask App using<br>
 `cd Flask-Chat`<br>
-You can download all the requirements from the file requirements.txt <br>
-`pip3 install -r requirements.txt`<br>
+Activate virtual environment <br>
+`source venv/bin/activate`<br>
+
 Run the app using<br>
 `python3 main.py`<br>
