@@ -24,4 +24,4 @@ def handleMessage(data):
     emit('from flask',data,broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app,debug=True)
+    socketio.run(app,host='192.168.1.65',debug=True)

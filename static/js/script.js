@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var currentUser,message,textToAppend;
-    var socket = io.connect("127.0.0.1");
-    var socket_messages = io.connect("127.0.0.1:5000/message")
+    var socket = io.connect("192.168.1.65");
+    var socket_messages = io.connect("192.168.1.65:5000/message")
     $('#sendbutton').on('click', function (data) {
         message = $('#myMessage').val();
         currentUser = $('#Name').val();
@@ -12,7 +12,7 @@ $(document).ready(function () {
         });
 
     });
-    $('#myMessage').focus((data)=>{
+    $('#myMessage').focusin((data)=>{
     socket_messages.emit('typing',{
         messages:message,
         names:currentUser
