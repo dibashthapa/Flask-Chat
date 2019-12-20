@@ -6,13 +6,23 @@ app.secret_key = "dibashthapa"
 @app.route('/')
 def index():
     return render_template("index.html")
-@app.route('/chat',methods=['POST','GET'])
-def run_chat():
+
+@app.route('/submit',methods=['POST','GET'])
+def submit():
     if (request.method=='POST'):
         Name=request.form['Name']
-        return render_template("chats.html",Status=True,Name=Name)
+        session['Name']=Name
+        return redirect('/chat')
     else:
-        return render_template("chats.html")
+        return redirect('/')
+
+@app.route('/chat',methods=['POST','GET'])
+def run_chat():
+    if 'Name' in session:
+        Name=session['Name']
+        return render_template("chats.html",Name=Name)
+    else:
+        return redirect('/')
 @socketio.on("typing",namespace='/message')
 def send_typing(data):
     print(data['names'],"is typing...")
@@ -24,4 +34,4 @@ def handleMessage(data):
     emit('from flask',data,broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app,host='192.168.1.65',debug=True)
+    socketio.run(app,debug=True)
