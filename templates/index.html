@@ -1,0 +1,8 @@
+{%extends "base.html" %}
+ 
+{% block head %}
+<form action="/submit" method="POST">
+  <input type="text"  style="width:200px;" class="form-control" name="Name">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
